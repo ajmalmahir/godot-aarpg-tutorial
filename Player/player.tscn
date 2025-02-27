@@ -1,7 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://pr3o6e84vd2g"]
+[gd_scene load_steps=17 format=3 uid="uid://pr3o6e84vd2g"]
 
 [ext_resource type="Script" path="res://Player/Scripts/player.gd" id="1_7qy7p"]
-[ext_resource type="Texture2D" uid="uid://bp2emul4ujikl" path="res://Player/Sprites/ExamplePlayerSprite.png" id="1_upvyl"]
+[ext_resource type="Texture2D" uid="uid://d13kbcqs2ewkp" path="res://Player/Sprites/PlayerSprite02.png" id="2_j2o3l"]
 [ext_resource type="Script" path="res://Player/Scripts/player_state_machine.gd" id="3_4vul7"]
 [ext_resource type="Script" path="res://Player/Scripts/state_idle.gd" id="4_ctdti"]
 [ext_resource type="Script" path="res://Player/Scripts/state_walk.gd" id="5_gng76"]
@@ -34,10 +34,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 2, 1]
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 2]
 }
 
 [sub_resource type="Animation" id="Animation_oras0"]
@@ -51,10 +51,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [14, 15, 16]
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [6, 8]
 }
 
 [sub_resource type="Animation" id="Animation_h100c"]
@@ -68,10 +68,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [7, 8, 9]
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3, 5]
 }
 
 [sub_resource type="Animation" id="Animation_lf0nb"]
@@ -85,10 +85,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [3, 4, 5, 6]
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [9, 12]
 }
 
 [sub_resource type="Animation" id="Animation_y2ly1"]
@@ -102,10 +102,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [17, 18, 19, 20]
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [17, 20]
 }
 
 [sub_resource type="Animation" id="Animation_5kpwl"]
@@ -119,15 +119,49 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [10, 11, 12, 13]
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [13, 16]
+}
+
+[sub_resource type="Animation" id="Animation_dgxrr"]
+resource_name = "attack_down"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [21, 23]
+}
+
+[sub_resource type="Animation" id="Animation_73r8q"]
+resource_name = "attack_up"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [21, 23]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bqg6n"]
 _data = {
 "RESET": SubResource("Animation_r03p5"),
+"attack_down": SubResource("Animation_dgxrr"),
+"attack_up": SubResource("Animation_73r8q"),
 "idle_down": SubResource("Animation_qbcc7"),
 "idle_side": SubResource("Animation_oras0"),
 "idle_up": SubResource("Animation_h100c"),
@@ -148,8 +182,9 @@ shape = SubResource("CircleShape2D_04nsg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, -26)
-texture = ExtResource("1_upvyl")
-hframes = 21
+texture = ExtResource("2_j2o3l")
+hframes = 16
+vframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
