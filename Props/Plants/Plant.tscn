@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqpoq40s0g4o0"]
+
+[ext_resource type="Texture2D" uid="uid://jo6k5twyo1hh" path="res://Props/Sprites/Props.png" id="1_87664"]
+[ext_resource type="PackedScene" uid="uid://ca38fto0j77gi" path="res://GeneralNodes/HitBox/hit_box.tscn" id="2_sw2ea"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85r60"]
+size = Vector2(24, 16)
+
+[node name="Plant" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_87664")
+hframes = 16
+vframes = 3
+
+[node name="HitBox" parent="." instance=ExtResource("2_sw2ea")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_85r60")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_85r60")
